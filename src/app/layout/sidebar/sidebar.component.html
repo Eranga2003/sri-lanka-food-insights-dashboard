@@ -1,4 +1,4 @@
-<aside class="sidebar">
+<aside class="sidebar-shell">
   <div class="brand">
     <div class="brand-mark">SD</div>
     <div class="brand-text">
@@ -7,17 +7,23 @@
     </div>
   </div>
 
-  <nav class="nav">
+  <mat-nav-list class="nav">
     @for (item of navItems; track item.path) {
-      <a
+      <button
+        mat-list-item
         [routerLink]="item.path"
         routerLinkActive="active"
         class="nav-item"
         [routerLinkActiveOptions]="{ exact: true }"
+        [attr.aria-label]="item.full || item.label"
       >
-        <span class="icon" [attr.data-icon]="item.icon"></span>
-        <span class="label">{{ item.label }}</span>
-      </a>
+        <span class="pill">
+          <mat-icon class="pill-icon" aria-hidden="true" fontSet="material-symbols-outlined">
+            {{ item.icon }}
+          </mat-icon>
+          <span class="label">{{ item.label }}</span>
+        </span>
+      </button>
     }
-  </nav>
+  </mat-nav-list>
 </aside>

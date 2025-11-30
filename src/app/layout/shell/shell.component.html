@@ -1,10 +1,12 @@
-<div class="layout">
-  <app-sidebar class="sidebar"></app-sidebar>
-  <div class="content-area">
+<mat-sidenav-container class="layout">
+  <mat-sidenav class="sidebar" mode="side" opened>
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content-area">
     <app-topbar (themeToggle)="toggleTheme()"></app-topbar>
     <main class="page-frame">
       <router-outlet></router-outlet>
     </main>
-  </div>
-  <div class="backdrop"></div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

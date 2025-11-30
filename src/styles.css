@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root {
+  --mdc-theme-primary: #0b8f61;
+  --mdc-theme-secondary: #0b8f61;
+  --mdc-theme-on-primary: #ffffff;
+  --mdc-filled-text-field-container-color: #f8fafc;
+}
+
+body.dark {
+  --mdc-theme-primary: #22d3a9;
+  --mdc-theme-on-primary: #0b1220;
+}

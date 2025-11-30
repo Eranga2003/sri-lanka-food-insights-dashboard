@@ -1,4 +1,4 @@
-<header class="topbar">
+<mat-toolbar class="topbar" color="primary">
   <div class="project">
     <div class="dot"></div>
     <div>
@@ -7,25 +7,28 @@
     </div>
   </div>
 
+  <span class="spacer"></span>
+
   <div class="actions">
-    <label class="search">
-      <span class="icon" aria-hidden="true"></span>
+    <mat-form-field appearance="outline" class="search">
+      <mat-icon matPrefix>search</mat-icon>
       <input
+        matInput
         type="search"
         placeholder="Search anything..."
         [(ngModel)]="searchTerm"
         aria-label="Search"
       />
-    </label>
+    </mat-form-field>
 
-    <button class="icon-btn" type="button" (click)="onToggle()" aria-label="Toggle theme">
-      <span class="sun"></span>
-      <span class="moon"></span>
+    <button mat-icon-button type="button" (click)="onToggle()" aria-label="Toggle theme">
+      <mat-icon class="light-icon">wb_sunny</mat-icon>
+      <mat-icon class="dark-icon">dark_mode</mat-icon>
     </button>
 
-    <button class="icon-btn user" type="button" aria-label="User profile">
-      <span class="avatar">A</span>
+    <button mat-flat-button color="primary" class="user" type="button" aria-label="User profile">
+      <mat-icon>account_circle</mat-icon>
       <span class="chevron"></span>
     </button>
   </div>
-</header>
+</mat-toolbar>

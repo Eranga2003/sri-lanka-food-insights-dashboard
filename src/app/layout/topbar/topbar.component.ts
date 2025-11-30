@@ -1,30 +1,27 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [
-    FormsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.css',
 })
 export class TopbarComponent {
+  @Input() isDarkMode = false;
   @Output() themeToggle = new EventEmitter<void>();
-  searchTerm = '';
+  @Output() search = new EventEmitter<string>();
 
-  onToggle(): void {
+  onThemeToggle(): void {
     this.themeToggle.emit();
+  }
+
+  emitSearch(term: string): void {
+    this.search.emit(term.trim());
+  }
+
+  quickSearch(term: string): void {
+    this.emitSearch(term);
   }
 }

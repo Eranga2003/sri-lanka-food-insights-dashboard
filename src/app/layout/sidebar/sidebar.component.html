@@ -9,7 +9,7 @@
 
   <mat-nav-list class="nav">
     @for (item of navItems; track item.path) {
-      <button
+      <a
         mat-list-item
         [routerLink]="item.path"
         routerLinkActive="active"
@@ -23,7 +23,7 @@
           </mat-icon>
           <span class="label">{{ item.label }}</span>
         </span>
-      </button>
+      </a>
     }
   </mat-nav-list>
 </aside>

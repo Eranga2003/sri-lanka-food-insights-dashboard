@@ -16,6 +16,7 @@ type NavItem = { label: string; path: string; icon: string; full?: string };
 export class SidebarComponent {
   readonly projectName = 'Smart Dashboard';
   readonly navItems: NavItem[] = [
+    { label: 'Dashboard', path: '/dashboard', icon: 'dashboard' },
     { label: 'Food Manufacturing', path: '/food-manufacturing', icon: 'factory' },
     { label: 'Human Capital', full: 'Human Capital / Children Nutrition', path: '/human-capital', icon: 'family_restroom' },
     { label: 'Weather Loss', full: 'Weather-Related Food Loss', path: '/food-loss/weather', icon: 'cloudy_snowing' },

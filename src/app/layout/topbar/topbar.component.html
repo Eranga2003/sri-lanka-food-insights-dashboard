@@ -1,34 +1,60 @@
-<mat-toolbar class="topbar" color="primary">
-  <div class="project">
-    <div class="dot"></div>
-    <div>
-      <p class="eyebrow">Project</p>
-      <h2>Food Security Smart Dashboard</h2>
+<header class="topbar-shell">
+  <div class="leading">
+    <div class="title-block">
+      <p class="eyebrow">Control center</p>
+      <div class="title-row">
+        <h2>Smart Dashboard</h2>
+        <span class="status-chip">
+          <span class="status-dot"></span>
+          Live
+        </span>
+      </div>
+    </div>
+
+    <div class="search-shell">
+      <span class="material-symbols-outlined search-icon">search</span>
+      <input
+        #searchBox
+        type="search"
+        placeholder="Search analytics, teams, reports..."
+        (keyup.enter)="emitSearch(searchBox.value)"
+      />
+      <button class="ghost-btn" type="button" (click)="emitSearch(searchBox.value)">
+        Enter ↵
+      </button>
     </div>
   </div>
 
-  <span class="spacer"></span>
-
   <div class="actions">
-    <mat-form-field appearance="outline" class="search">
-      <mat-icon matPrefix>search</mat-icon>
-      <input
-        matInput
-        type="search"
-        placeholder="Search anything..."
-        [(ngModel)]="searchTerm"
-        aria-label="Search"
-      />
-    </mat-form-field>
+    <div class="quick-filters">
+      <button type="button" class="chip" (click)="quickSearch('revenue')">Revenue</button>
+      <button type="button" class="chip" (click)="quickSearch('users')">Users</button>
+      <button type="button" class="chip" (click)="quickSearch('alerts')">Alerts</button>
+    </div>
 
-    <button mat-icon-button type="button" (click)="onToggle()" aria-label="Toggle theme">
-      <mat-icon class="light-icon">wb_sunny</mat-icon>
-      <mat-icon class="dark-icon">dark_mode</mat-icon>
+    <div class="divider"></div>
+
+    <button
+      type="button"
+      class="icon-button"
+      [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+      (click)="onThemeToggle()"
+    >
+      <span class="material-symbols-outlined" *ngIf="!isDarkMode">dark_mode</span>
+      <span class="material-symbols-outlined" *ngIf="isDarkMode">light_mode</span>
     </button>
 
-    <button mat-flat-button color="primary" class="user" type="button" aria-label="User profile">
-      <mat-icon>account_circle</mat-icon>
-      <span class="chevron"></span>
+    <button type="button" class="icon-button badge">
+      <span class="material-symbols-outlined">notifications</span>
     </button>
+
+    <div class="user-chip">
+      <div class="avatar">JD</div>
+      <div class="meta">
+        <span class="name">Jordan Doe</span>
+        <span class="role">Product Lead</span>
+      </div>
+      <span class="material-symbols-outlined caret">expand_more</span>
+    </div>
   </div>
-</mat-toolbar>
+</header>

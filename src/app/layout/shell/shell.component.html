@@ -4,7 +4,10 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="content-area">
-    <app-topbar (themeToggle)="toggleTheme()"></app-topbar>
+    <app-topbar
+      [isDarkMode]="isDarkMode"
+      (themeToggle)="toggleTheme()"
+    ></app-topbar>
     <main class="page-frame">
       <router-outlet></router-outlet>
     </main>

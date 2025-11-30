@@ -2,8 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import {
+  AddHumanRecordDialogComponent,
+  NewHumanNutritionRecord,
+} from './add-human-record-dialog.component';
 
-type AgeGroup = 'Age 1–5' | 'Age 6–12' | 'Age 13–18' | 'Age 18–60';
+type AgeGroup = 'Age 1-5' | 'Age 6-12' | 'Age 13-18' | 'Age 18-60';
 type NutritionStatus = 'good' | 'medium' | 'low';
 
 interface AgeGroupCard {
@@ -37,9 +41,14 @@ interface RiskRow {
 @Component({
   selector: 'app-human-capital',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, AddHumanRecordDialogComponent],
   template: `
     <section class="page">
+      <app-add-human-record-dialog
+        *ngIf="showAddDialog"
+        (close)="closeAddDialog()"
+        (save)="handleRecordSave($event)"
+      ></app-add-human-record-dialog>
       <div class="page-header">
         <div>
           <p class="eyebrow">Dashboard</p>
@@ -50,7 +59,7 @@ interface RiskRow {
         </div>
         <div class="header-actions">
           <button class="ghost-btn">Export snapshot</button>
-          <button mat-raised-button color="primary">Add new record</button>
+          <button mat-raised-button color="primary" (click)="openAddDialog()">Add new record</button>
         </div>
       </div>
 
@@ -645,6 +654,8 @@ interface RiskRow {
   ],
 })
 export class HumanCapitalComponent {
+  showAddDialog = false;
+
   readonly kpis = [
     {
       label: 'Average nutrition score (all children)',
@@ -658,7 +669,7 @@ export class HumanCapitalComponent {
       value: '2',
       status: 'medium' as NutritionStatus,
       statusLabel: 'Watch',
-      hint: '6–12 and 13–18 need attention',
+      hint: '6-12 and 13-18 need attention',
     },
     {
       label: 'Province with best child nutrition',
@@ -676,32 +687,32 @@ export class HumanCapitalComponent {
     },
   ];
 
-  readonly ageGroups: AgeGroup[] = ['Age 1–5', 'Age 6–12', 'Age 13–18', 'Age 18–60'];
+  readonly ageGroups: AgeGroup[] = ['Age 1-5', 'Age 6-12', 'Age 13-18', 'Age 18-60'];
 
   readonly ageGroupCards: AgeGroupCard[] = [
     {
-      label: 'Age 1–5',
+      label: 'Age 1-5',
       status: 'good',
       issue: 'Balanced intake; monitor iron',
       score: 86,
       trend: '+2.1 pts vs last month',
     },
     {
-      label: 'Age 6–12',
+      label: 'Age 6-12',
       status: 'medium',
       issue: 'Milk intake low in Northern province',
       score: 74,
       trend: '-1.4 pts vs last month',
     },
     {
-      label: 'Age 13–18',
+      label: 'Age 13-18',
       status: 'low',
       issue: 'Vegetable intake low; calories under target',
       score: 68,
       trend: '-3.2 pts vs last month',
     },
     {
-      label: 'Age 18–60',
+      label: 'Age 18-60',
       status: 'medium',
       issue: 'Protein intake modest; sugar slightly high',
       score: 72,
@@ -710,67 +721,81 @@ export class HumanCapitalComponent {
   ];
 
   readonly consumption: ConsumptionMix[] = [
-    { ageGroup: 'Age 1–5', rice: 32, vegetables: 28, milk: 30, others: 10 },
-    { ageGroup: 'Age 6–12', rice: 38, vegetables: 24, milk: 26, others: 12 },
-    { ageGroup: 'Age 13–18', rice: 42, vegetables: 22, milk: 20, others: 16 },
-    { ageGroup: 'Age 18–60', rice: 40, vegetables: 26, milk: 18, others: 16 },
+    { ageGroup: 'Age 1-5', rice: 32, vegetables: 28, milk: 30, others: 10 },
+    { ageGroup: 'Age 6-12', rice: 38, vegetables: 24, milk: 26, others: 12 },
+    { ageGroup: 'Age 13-18', rice: 42, vegetables: 22, milk: 20, others: 16 },
+    { ageGroup: 'Age 18-60', rice: 40, vegetables: 26, milk: 18, others: 16 },
   ];
 
   readonly heatmap: HeatmapRow[] = [
     {
       province: 'Western',
       levels: {
-        'Age 1–5': 'good',
-        'Age 6–12': 'good',
-        'Age 13–18': 'medium',
-        'Age 18–60': 'good',
+        'Age 1-5': 'good',
+        'Age 6-12': 'good',
+        'Age 13-18': 'medium',
+        'Age 18-60': 'good',
       },
     },
     {
       province: 'Central',
       levels: {
-        'Age 1–5': 'medium',
-        'Age 6–12': 'medium',
-        'Age 13–18': 'low',
-        'Age 18–60': 'medium',
+        'Age 1-5': 'medium',
+        'Age 6-12': 'medium',
+        'Age 13-18': 'low',
+        'Age 18-60': 'medium',
       },
     },
     {
       province: 'Southern',
       levels: {
-        'Age 1–5': 'good',
-        'Age 6–12': 'medium',
-        'Age 13–18': 'medium',
-        'Age 18–60': 'good',
+        'Age 1-5': 'good',
+        'Age 6-12': 'medium',
+        'Age 13-18': 'medium',
+        'Age 18-60': 'good',
       },
     },
     {
       province: 'Northern',
       levels: {
-        'Age 1–5': 'medium',
-        'Age 6–12': 'low',
-        'Age 13–18': 'low',
-        'Age 18–60': 'medium',
+        'Age 1-5': 'medium',
+        'Age 6-12': 'low',
+        'Age 13-18': 'low',
+        'Age 18-60': 'medium',
       },
     },
     {
       province: 'Eastern',
       levels: {
-        'Age 1–5': 'medium',
-        'Age 6–12': 'medium',
-        'Age 13–18': 'medium',
-        'Age 18–60': 'medium',
+        'Age 1-5': 'medium',
+        'Age 6-12': 'medium',
+        'Age 13-18': 'medium',
+        'Age 18-60': 'medium',
       },
     },
   ];
 
   readonly riskList: RiskRow[] = [
-    { province: 'Northern', ageGroup: 'Age 6–12', risk: 'low', cause: 'Milk intake low' },
-    { province: 'Northern', ageGroup: 'Age 13–18', risk: 'low', cause: 'Calorie gap vs target' },
-    { province: 'Central', ageGroup: 'Age 13–18', risk: 'medium', cause: 'Vegetables below target' },
-    { province: 'Eastern', ageGroup: 'Age 6–12', risk: 'medium', cause: 'Protein shortfall' },
-    { province: 'Central', ageGroup: 'Age 18–60', risk: 'medium', cause: 'High sugar, low protein' },
+    { province: 'Northern', ageGroup: 'Age 6-12', risk: 'low', cause: 'Milk intake low' },
+    { province: 'Northern', ageGroup: 'Age 13-18', risk: 'low', cause: 'Calorie gap vs target' },
+    { province: 'Central', ageGroup: 'Age 13-18', risk: 'medium', cause: 'Vegetables below target' },
+    { province: 'Eastern', ageGroup: 'Age 6-12', risk: 'medium', cause: 'Protein shortfall' },
+    { province: 'Central', ageGroup: 'Age 18-60', risk: 'medium', cause: 'High sugar, low protein' },
   ];
+
+  openAddDialog(): void {
+    this.showAddDialog = true;
+  }
+
+  closeAddDialog(): void {
+    this.showAddDialog = false;
+  }
+
+  handleRecordSave(record: NewHumanNutritionRecord): void {
+    // Placeholder: wire into backend/state store as needed.
+    console.log('Human capital record submitted', record);
+    this.showAddDialog = false;
+  }
 
   segmentWidth(value: number, mix: ConsumptionMix): string {
     const total = this.total(mix);
@@ -782,3 +807,6 @@ export class HumanCapitalComponent {
     return mix.rice + mix.vegetables + mix.milk + mix.others;
   }
 }
+
+
+

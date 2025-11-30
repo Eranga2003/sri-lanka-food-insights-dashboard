@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+:host.dark {
+  color: #e2e8f0;
+  background: #0b1220;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.04));
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-frame {
+  flex: 1;
+  padding: 24px 28px 32px;
+  background: transparent;
+}
+
+.backdrop {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+    border-bottom: 1px solid rgba(15, 167, 104, 0.2);
+  }
+}

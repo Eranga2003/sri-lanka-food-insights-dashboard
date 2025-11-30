@@ -1,0 +1,31 @@
+<header class="topbar">
+  <div class="project">
+    <div class="dot"></div>
+    <div>
+      <p class="eyebrow">Project</p>
+      <h2>Food Security Smart Dashboard</h2>
+    </div>
+  </div>
+
+  <div class="actions">
+    <label class="search">
+      <span class="icon" aria-hidden="true"></span>
+      <input
+        type="search"
+        placeholder="Search anything..."
+        [(ngModel)]="searchTerm"
+        aria-label="Search"
+      />
+    </label>
+
+    <button class="icon-btn" type="button" (click)="onToggle()" aria-label="Toggle theme">
+      <span class="sun"></span>
+      <span class="moon"></span>
+    </button>
+
+    <button class="icon-btn user" type="button" aria-label="User profile">
+      <span class="avatar">A</span>
+      <span class="chevron"></span>
+    </button>
+  </div>
+</header>

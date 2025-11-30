@@ -1,0 +1,23 @@
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">SD</div>
+    <div class="brand-text">
+      <p class="eyebrow">Admin</p>
+      <h1>{{ projectName }}</h1>
+    </div>
+  </div>
+
+  <nav class="nav">
+    @for (item of navItems; track item.path) {
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        class="nav-item"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <span class="icon" [attr.data-icon]="item.icon"></span>
+        <span class="label">{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+</aside>

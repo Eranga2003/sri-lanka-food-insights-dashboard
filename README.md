@@ -1,59 +1,142 @@
-# AngularSmartDashboard
+Here is a **clean, modern, professional README** you can directly paste into your GitHub repository.
+It includes sections, badges, screenshots placeholders, clean formatting, and a polished tone.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
+---
 
-## Development server
+# 🌾 **Sri Lanka Food Insights Dashboard**
 
-To start a local development server, run:
+### **A Data-Driven Platform for National Food Security & Sustainability** 🇱🇰
+
+A modern, interactive data visualization dashboard built to analyze and improve Sri Lanka’s food production, nutrition, climate challenges, and agricultural risks.
+This platform unifies multiple critical datasets into an intuitive interface to support **data-driven decision-making** for policymakers, researchers, and development teams.
+
+---
+
+## 🚀 **Overview**
+
+The **Sri Lanka Food Insights Dashboard** integrates real-time and historical data on:
+
+* 🌾 Food manufacturing & production
+* 🥛 Child nutrition (1–5, 6–12 & 13–18 age groups)
+* 🍃 Weather-related food loss
+* 🐛 Pest and disease risk
+* 🏚️ Post-harvest & storage issues
+* 📈 Monthly trends & progress indicators
+
+By transforming raw statistics into **interactive maps, charts, and KPIs**, the dashboard enables rapid identification of high-risk areas and supports targeted interventions for national food sustainability.
+
+---
+
+## 🎯 **Project Purpose**
+
+The platform is designed to empower:
+
+* 🌱 **Agriculture departments** to monitor crop outputs
+* 🛡️ **Disaster management teams** to track weather or pest-related risks
+* 🧒 **Nutrition programs** to target vulnerable child groups
+* 📊 **Researchers & NGOs** to analyze provincial disparities
+* 🧭 **Policy makers** to make informed, timely decisions
+
+---
+
+## 🖥️ **Features**
+
+✔️ Provincial-level food production analytics
+✔️ Interactive heatmaps for climate, pest & disease impact
+✔️ Child nutrition gap visualization by age group
+✔️ KPI cards with real-time insights
+✔️ Monthly trend comparison charts
+✔️ Clean, modern, responsive UI
+✔️ Firebase-powered cloud datasets
+
+---
+
+## 🛠️ **Technology Stack**
+
+| Layer                            | Technologies                      |
+| -------------------------------- | --------------------------------- |
+| **Frontend**                     | Angular                           |
+| **Database**                     | Firebase Firestore                |
+| **Charts & Analytics**           | ApexCharts, ng2-charts            |
+| **Design**                       | Responsive UI / Custom Components |
+                         
+
+---
+
+## 📸 **Screenshots**
+
+*(Add your own screenshots here)*
+
+```
+📍 dashboard-home.png  
+📍 analytics-page.png  
+📍 nutrition-map.png
+```
+
+---
+
+## 📂 **Project Structure**
+
+```
+/src
+  /app
+    /components
+    /services
+    /models
+  /assets
+  ...
+```
+
+---
+
+## 🚀 **Getting Started**
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/your-repo/sri-lanka-food-insights-dashboard.git
+cd sri-lanka-food-insights-dashboard
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Run the application
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 4️⃣ Open in browser
 
-## Code scaffolding
+👉 [http://localhost:4200/](http://localhost:4200/)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## 🤝 **Contributing**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Contributions, suggestions, bug reports and feature requests are warmly welcome!
+Feel free to submit a pull request or open an issue.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## 📜 **License**
 
-To build the project run:
+This project is licensed under the **MIT License** — feel free to use, modify, and build upon it.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## ⭐ **If you find this project useful, don’t forget to star the repo!**
 
-## Running unit tests
+Together, let’s build smarter solutions for sustainable agriculture. 🌱✨
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+If you'd like, I can also generate:
+✅ A project logo
+✅ A banner for the README
+✅ Badges (build, version, tech stack)
+Just tell me!
